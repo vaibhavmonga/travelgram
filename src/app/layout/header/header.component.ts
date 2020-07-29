@@ -10,7 +10,9 @@ import {Router} from "@angular/router";
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+
 email=null;
+
   constructor(
     private  auth: AuthService,
     private  toastr : ToastrService,

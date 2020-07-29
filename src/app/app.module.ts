@@ -21,6 +21,14 @@ import { ToastrModule } from "ngx-toastr";
 // import fortawesome
 import { FontAwesomeModule} from "@fortawesome/angular-fontawesome";
 
+import { FormsModule } from "@angular/forms";
+
+// import Firebase
+import { AngularFireModule } from "@angular/fire";
+import {AngularFireAuth, AngularFireAuthModule} from "@angular/fire/auth";
+
+import { environment } from "../environments/environment";
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,7 +47,10 @@ import { FontAwesomeModule} from "@fortawesome/angular-fontawesome";
     AppRoutingModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
-    FontAwesomeModule
+    FontAwesomeModule,
+    FormsModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireAuthModule
   ],
   providers: [],
   bootstrap: [AppComponent]
