@@ -86,7 +86,7 @@ export class SignupComponent implements OnInit {
     task.percentageChanges().subscribe((percentage) => {
       this.uploadPercent = percentage;
     });
-    
+
 
     task.snapshotChanges().pipe(
       finalize(() => {

@@ -4,6 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import {SigninComponent} from "./pages/signin/signin.component";
 import {SignupComponent} from "./pages/signup/signup.component";
+import {AddpageComponent} from "./pages/addpage/addpage.component";
 
 const routes: Routes = [
   {
@@ -13,7 +14,12 @@ const routes: Routes = [
   {
     path:'signup',
     component: SignupComponent
+  },
+  {
+    path: 'addpage',
+    component: AddpageComponent
   }
+
 ];
 
 @NgModule({
