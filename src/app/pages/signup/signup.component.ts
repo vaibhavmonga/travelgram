@@ -42,15 +42,16 @@ export class SignupComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+// here form  data is taken by the variable, now these variables has data which comes from f variable
   onSubmit(f : NgForm){
     const { name,email,username,bio,country,password } = f.form.value;
-
+// in this when we pass email and password then response is generated, then we take uid const so that data from user is moved to uid
 
     this.auth.signup(email,password)
       .then((res)=>{
         console.log(res);
         const { uid } = res.user;
+// then uid has all data, and then these data is set in database
 
         this.db.object(`/users/${uid}`).set({
           id : uid,
@@ -72,6 +73,8 @@ export class SignupComponent implements OnInit {
     })
 
   }
+
+  // event has the image data , here we take the file const and data from event is moved in file const
   async uploadFile(event) {
     console.log(event);
     const file = event.target.files[0];

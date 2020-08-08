@@ -12,7 +12,7 @@
                 <label for="imagepicker">
                   <img [src]="picture" width="100" height="100" class="profile">
                 </label>
-
+<!--   change method is used when there is any event generated means to upload request of image is generated then $ event is used to bind the method-->
                 <input type="file" name="image" id="imagepicker" accept="image/*" class="hidden" hidden (change)="uploadFile($event)">
 
               </div>

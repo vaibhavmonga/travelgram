@@ -17,7 +17,7 @@ return this.auth.createUserWithEmailAndPassword(email,password);
   signin(email:string,password:string){
 return this.auth.signInWithEmailAndPassword(email,password);
   }
-// current user data is saved in authstate, after login user information will come
+// current user data is saved in authstate, after login, user information will come
   getuser(){
 return this.auth.authState;
   }
