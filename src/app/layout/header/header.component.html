@@ -25,7 +25,7 @@
       <div *ngIf="email" class="navbar-text float-left">
         {{ email }}
       </div>
-      <a class="nav-item nav-link">Home</a>
+      <a *ngIf="email" [routerLink]="['home']" class="nav-item nav-link">Home</a>
 
       <a *ngIf="!email" [routerLink]="['signin']" class="nav-item nav-link">Sign In</a>
       <a *ngIf="!email" [routerLink]="['signup']" class="nav-item nav-link">Sign Up</a>
