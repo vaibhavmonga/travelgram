@@ -45,7 +45,7 @@ export class AddpageComponent implements OnInit {
     private toastr : ToastrService
   ) {
     auth.getuser().subscribe((user)=>{
-      this.db.object(`/user/$(user.uid)`).valueChanges().subscribe((userDetails)=>{
+      this.db.object(`/users/${user.uid}`).valueChanges().subscribe((userDetails)=>{
         this.user=userDetails;
       })
     })
@@ -57,7 +57,7 @@ export class AddpageComponent implements OnInit {
     const {locationName,description} = f.form.value;
     const uid=uuidv4();
 
-    this.db.object(`/posts/$(uid)`).set({
+    this.db.object(`/posts/${uid}`).set({
       id:uid,
       locationName: locationName,
       description:description,
