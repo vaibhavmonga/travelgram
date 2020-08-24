@@ -44,8 +44,10 @@ export class AddpageComponent implements OnInit {
     private storage : AngularFireStorage,
     private toastr : ToastrService
   ) {
+    // from auth we call getuser() bec all user information is in getuser, after subscribe it generate response(user ,we can use any name)
+
     auth.getuser().subscribe((user)=>{
-      this.db.object(`/users/${user.uid}`).valueChanges().subscribe((userDetails)=>{
+      this.db.object(`/users/${user.uid}`).valueChanges().subscribe((userDetails)=>{  // here we get response(userdetail which we transferred in user variable)
         this.user=userDetails;
       })
     })
@@ -54,9 +56,14 @@ export class AddpageComponent implements OnInit {
   ngOnInit(): void {
   }
   onSubmit(f:NgForm){
-    const {locationName,description} = f.form.value;
-    const uid=uuidv4();
 
+    // from html page data comes in f and here we get data which is present in f there is form , in form there is value,
+    // from value we transfer data in const ie location name and description
+    const {locationName,description} = f.form.value;
+    // and uuid is transfer in new const uid
+    const uid=uuidv4();
+     // here we are  fixing or set  the onsumit method data in database by transferring into an object
+      // left side names are from database(where we are fixing or storing data) ie id, locationName, instaId
     this.db.object(`/posts/${uid}`).set({
       id:uid,
       locationName: locationName,
@@ -72,6 +79,15 @@ export class AddpageComponent implements OnInit {
       this.toastr.error("error while process")
     })
   }
+
+  // When an async function is called, it returns a Promise.
+  // When the async function returns a value,the Promise will be resolved with the returned value.
+  // When the async function throws an exception or some value,the Promise will be rejected with the thrown value.
+
+  // An async function can contain an await expression, that pauses the execution of the async function and waits for the passed Promise's resolution,
+  // and then resumes the async function's execution and returns the resolved value.
+
+  // sometimes lower code execute without waiting the above code, so to protect this mis arranement we use async
   async uploadFile(event) {
     console.log(event);
     const file = event.target.files[0];
@@ -83,6 +99,7 @@ export class AddpageComponent implements OnInit {
 
     const task = this.storage.upload(filePath, resizedImage);
 
+    // percentchange is predefined method for display percentage upload data
     task.percentageChanges().subscribe((percentage) => {
       this.uploadPercent = percentage;
     });

@@ -14,3 +14,19 @@
     <small class="text-muted">by :- {{ post.by }}</small>
   </p>
 </div>
+
+<div class="card-footer bg-transparent border-secondary d-flex justify-content-around align-content-center">
+  <div (click)="likePost()" class="text-primary">
+    <fa-icon [icon]="faThumbsUp" size="lg" primaryColor="blue"></fa-icon>
+    {{ like }}
+  </div>
+
+  <div (click)="dislikePost()" class="text-primary">
+    <fa-icon [icon]="faThumbsDown" size="lg" primaryColor="blue"></fa-icon>
+    {{ dislike }}
+  </div>
+
+  <a [href]="getInstaUrl()" target="_blank" class="text-primary">
+    <fa-icon [icon]="faShareSquare" size="lg" primaryColor="blue"></fa-icon>
+  </a>
+</div>

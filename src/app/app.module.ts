@@ -25,7 +25,7 @@ import { FormsModule } from "@angular/forms";
 
 // import Firebase
 import { AngularFireModule } from "@angular/fire";
-import {AngularFireAuth, AngularFireAuthModule} from "@angular/fire/auth";
+import { AngularFireAuthModule} from "@angular/fire/auth";
 
 import { environment } from "../environments/environment";
 

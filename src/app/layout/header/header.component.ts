@@ -18,7 +18,7 @@ email=null;
     private  toastr : ToastrService,
     private router : Router
   ) {
-    // on loading this page if there is value present in email then it will subscribe user otherwise it will no show any error
+    // on loading this page if there is value present in email then it will subscribe user otherwise it will not show any error
     // due to questionmark
     this.auth.getuser().subscribe((user)=>{
       this.email=user?.email;
