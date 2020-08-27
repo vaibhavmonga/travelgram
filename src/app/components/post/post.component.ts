@@ -31,9 +31,11 @@ faThumbsUp=faThumbsUp;
 
   ngOnInit(): void {
   }
-          // if there is vote in post then object value is updated with like or dislike
+          // if there is vote in post then object value is updated with like or dislike by +1
+  // ngOnChanges() is pre defined function for updating changes in post object (vote category)
   ngOnChanges(): void {
     if(this.post.vote){
+      // we are converting it into array , for that put data in object.value(),, map is used for loop
       Object.values(this.post.vote).map((value : any)=>{
         if(value.like){
           this.like += 1;
@@ -47,7 +49,8 @@ faThumbsUp=faThumbsUp;
         //   when we click like thumbsup then like function is called or updated
          // in that database , there is object in database, whose path is = posts/ ${this.post.id} and in this
   // vote/${this.uid}`).set({   when we click like then 1 like is added in recent value/  bec we have make object with uid,
-  // so a person  or one ser can do only one thing ie like or dislike
+  // so a person  can do only one thing ie like or dislike bec their object(which is uid) is same for both like and dislike,
+  // so on again cliking on dislike, the old like value is replace by dislike
   likePost(){
     this.db.object(`/posts/${this.post.id}/vote/${this.uid}`).set({
       like : 1,

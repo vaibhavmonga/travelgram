@@ -7,22 +7,35 @@ import {SignupComponent} from "./pages/signup/signup.component";
 import {AddpageComponent} from "./pages/addpage/addpage.component";
 import {HomeComponent} from "./pages/home/home.component";
 
+import {AngularFireAuthGuard,redirectUnauthorizedTo,redirectLoggedInTo} from "@angular/fire/auth-guard";
+
+const redirectUnauthorizedToLogin =()=> redirectUnauthorizedTo(['signin']);
+const redirectLoggedInToHome = ()=>redirectLoggedInTo(['home']);
+
 const routes: Routes = [
   {
   path:'home',
-  component:HomeComponent
+  component:HomeComponent,
+    canActivate:[AngularFireAuthGuard],
+    data : {authGuardPipe: redirectUnauthorizedToLogin}
 },
   {
     path:'signin',
-    component:SigninComponent
+    component:SigninComponent,
+    canActivate:[AngularFireAuthGuard],
+    data : {authGuardPipe: redirectLoggedInToHome}
   },
   {
     path:'signup',
-    component: SignupComponent
+    component: SignupComponent,
+    canActivate:[AngularFireAuthGuard],
+    data : {authGuardPipe: redirectLoggedInToHome}
   },
   {
     path: 'addpage',
-    component: AddpageComponent
+    component: AddpageComponent,
+    canActivate:[AngularFireAuthGuard],
+    data : {authGuardPipe: redirectUnauthorizedToLogin}
   }
 
 ];
